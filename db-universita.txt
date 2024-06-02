@@ -1,0 +1,80 @@
+# DB Università
+
+Tabella Dipartimento
+
+Nome colonna			Tipo			Attributi			Indici	
+id_dipartimento			int			AUTO_INCREMENT, NOT NULL	primary key
+Denominazione			varchar(50)		NOT NULL
+N_Corsi_Laurea			int			NULL
+
+Tabella Corso_Laurea
+
+Nome colonna			Tipo			Attributi			Indici
+id_corso_laurea			int			AUTO_INCREMENT, NOT NULL	primary key
+denominazione			varchar(50)		NOT NULL
+indirizzo			varchar(150)		NOT NULL
+città				varchar(50)		NOT NULL
+telefono			varchar(25)		NOT NULL
+e-mail				varchar(50)		NOT NULL
+id_dipartimento			int			NOT NULL			secondary key
+
+Tabella Corso
+
+Nome colonna			Tipo			Attributi			Indici
+id_corso			int			AUTO_INCREMENT, NOT NULL	primary key
+denominazione			varchar(50)		NOT NULL	
+numero_crediti			int			NOT NULL	
+aula				varchar(15)		NOT NULL				
+orario				time			NOT NULL
+id_corso_laurea			int			NOT NULL			secondary key
+
+
+Tabella Corso_Docente
+
+Nome colonna			Tipo			Attributi			Indici
+id_corso_docente		int			AUTO_INCREMENT, NOT NULL	primary key
+id_corso			int			NOT NULL			secondary key
+id_docente			int			NOT NULL			secondary key
+
+
+Tabella Docente
+
+Nome colonna			Tipo			Attributi			Indici
+id_docente			int			AUTO_INCREMENT, NOT NULL	primary key
+nome				varchar(50)		NOT NULL
+cognome				varchar(50)		NOT NULL
+telefono			varchar(25)		NOT NULL
+e-mail				varchar(50)		NOT NULL
+
+Tabella Appello_Esame
+
+Nome colonna			Tipo			Attributi			Indici
+id_appello_esame		int			AUTO_INCREMENT, NOT NULL	primary key
+denominazione			varchar(50)		NOT NULL
+data				date			NOT NULL
+aula				varchar(15)		NOT NULL
+orario				date			NOT NULL
+id_corso			int			NOT NULL			secondary key
+
+Tabella studente_appello_esame
+
+Nome colonna			Tipo			Attributi			Indici
+id_studente_appello_esame	int			AUTO_INCREMENT, NOT NULL	primary key
+id_studente			int			NOT NULL			secondary key
+id_appello_esame		int			NOT NULL			secondary key
+voto				int			NOT NULL
+
+Tabella Studente
+
+Nome colonna			Tipo			Attributi			Indici	
+id_studente			int			AUTO_INCREMENT, NOT NULL	primary key
+nome				varchar(50)		NOT NULL					
+cognome				varchar(50)		NOT NULL
+matricola			varchar(15)		NOT NULL, UNIQUE		
+data_nascita			date			NOT NULL
+telefono			varchar(25)		NOT NULL
+e-mail				varchar(50)		NOT NULL
+indirizzo			varchar(50)		NOT NULL
+id_corso_laurea			int			NOT NULL			secondary key
+
+
